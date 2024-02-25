@@ -29,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
   btnBorder: {
     border: '1px solid black'
   }
-
   // outer: {
   //     maxHeight: "100vh"
   // }
@@ -72,13 +71,13 @@ const DisplayTask = () => {
           overflowY: 'scroll'
         }}
       >
-        <Table sx={{ maxHeight: '250px' }}>
+        <Table stickyHeader sx={{ maxHeight: '250px' }}>
           <TableHead>
             <TableRow>
-              <TableCell> Sr No </TableCell>
-              <TableCell> Task </TableCell>
-              <TableCell> Status </TableCell>
-              <TableCell> Actions </TableCell>
+              <TableCell style={{ backgroundColor: 'lightblue', color: '#000' }}> Sr No </TableCell>
+              <TableCell style={{ backgroundColor: 'lightblue', color: '#000' }}> Task </TableCell>
+              <TableCell style={{ backgroundColor: 'lightblue', color: '#000' }}> Status </TableCell>
+              <TableCell style={{ backgroundColor: 'lightblue', color: '#000' }}> Actions </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -88,12 +87,12 @@ const DisplayTask = () => {
                   <TableCell> {index + 1} </TableCell>
 
                   {task.status == 'Completed' ? (
-                    <TableCell sx={{ textDecoration: 'line-through' }}>
+                    <TableCell sx={{ textDecoration: 'line-through'}}>
                       
-                      {task.task}
+                      { task.task.length > 15 ? task.task.substring(0,15)+'...' : task.task}
                     </TableCell>
                   ) : (
-                    <TableCell> {task.task} </TableCell>
+                    <TableCell> { task.task.length > 15 ? task.task.substring(0,15)+'...' : task.task} </TableCell>
                   )}
 
                   <TableCell> {task.status} </TableCell>
